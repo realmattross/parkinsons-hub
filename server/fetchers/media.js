@@ -1,9 +1,4 @@
-{
-    name: 'Movers and Shakers',
-        url: 'https://feeds.acast.com/public/shows/641216df1cc77a0010101f8c',
-            description: 'Rory Cellan-Jones, Jeremy Paxman and friends discuss life with Parkinson\'s from a Notting Hill pub — funny, honest, and essential listening',
-                type: 'podcast'
-},// Media Fetcher — PD Podcasts & YouTube Channels
+// Media Fetcher — PD Podcasts & YouTube Channels
 // Uses YouTube's public RSS feeds (no API key needed) + podcast RSS feeds
 
 import RssParser from 'rss-parser';
@@ -56,6 +51,12 @@ const YOUTUBE_CHANNELS = [
 
 // Podcast RSS feeds — verified working feeds
 const PODCAST_FEEDS = [
+    {
+        name: 'Movers and Shakers',
+        url: 'https://feeds.acast.com/public/shows/641216df1cc77a0010101f8c',
+        description: 'Rory Cellan-Jones, Jeremy Paxman and friends discuss life with Parkinson\'s — funny, honest, and essential listening',
+        type: 'podcast'
+    },
     {
         name: 'The Parkinson\'s Podcast (Davis Phinney Foundation)',
         url: 'https://feed.podbean.com/davisphinneyfoundation/feed.xml',
