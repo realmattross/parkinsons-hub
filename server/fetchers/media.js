@@ -24,55 +24,55 @@ const parser = new RssParser({
 const YOUTUBE_CHANNELS = [
     {
         name: 'Davis Phinney Foundation',
-        channelId: 'UCO6p-nB_-nuiDVPP-1Fl6kQ',
+        channelId: 'UCNY5bmQqCk-kcqU7d15U4-Q',
         description: 'Empowering people with PD to live well through exercise, community, and research'
     },
     {
-        name: 'Parkinson\'s Foundation',
-        channelId: 'UCPzwBMmNfSZiS0aHJZMkuzA',
-        description: 'Expert-led content on living with PD — symptoms, treatments, and wellness'
-    },
-    {
         name: 'Michael J. Fox Foundation',
-        channelId: 'UCbmNph6atAoGfqLoCL_duAg',
+        channelId: 'UCEwLnD6-KgBHGcfZCRy7_qQ',
         description: 'Research updates, patient stories, and advocacy from the world\'s largest PD charity'
     },
     {
+        name: 'Parkinson\'s Foundation',
+        channelId: 'UCHafg5MbPub1-bkSEVMBxMQ',
+        description: 'Expert-led content on living with PD — symptoms, treatments, and wellness'
+    },
+    {
         name: 'Parkinson\'s UK',
-        channelId: 'UCDkMUBMJEDt0B6Y5h8W0TxQ',
+        channelId: 'UCZYwe6WjTqFbE-sAylkGdoA',
         description: 'UK-focused PD information, research news, and community stories'
     },
     {
-        name: 'Brian Grant Foundation',
-        channelId: 'UCvJ6G8G1uXEJIq8QHYGGovA',
-        description: 'Former NBA player Brian Grant shares his PD journey and wellness approaches'
+        name: 'Power for Parkinson\'s',
+        channelId: 'UCsHzMaHNpFHkH6TOXT9XSOQ',
+        description: 'The top global Parkinson\'s fitness channel — free exercise classes for people with PD'
     }
 ];
 
-// Podcast RSS feeds
+// Podcast RSS feeds — verified working feeds
 const PODCAST_FEEDS = [
     {
-        name: 'Parkinson\'s Research Podcast (Cure Parkinson\'s)',
-        url: 'https://feeds.buzzsprout.com/1638097.rss',
-        description: 'Conversations with researchers at the cutting edge of PD science',
+        name: 'The Parkinson\'s Podcast (Davis Phinney Foundation)',
+        url: 'https://feed.podbean.com/davisphinneyfoundation/feed.xml',
+        description: 'Expert interviews and community stories on living well with PD',
         type: 'podcast'
     },
     {
-        name: 'PD Conversations (Parkinson\'s Foundation)',
-        url: 'https://feeds.simplecast.com/DlQGDRd5',
-        description: 'Expert interviews on living well and the latest in PD research',
+        name: 'Substantial Matters (Parkinson\'s Foundation)',
+        url: 'http://parkinson.libsyn.com/rss',
+        description: 'Monthly expert interviews on PD treatments, research, and daily life',
         type: 'podcast'
     },
     {
-        name: 'The Parkinson\'s Revolution',
-        url: 'https://feeds.buzzsprout.com/2048803.rss',
-        description: 'Stories and strategies from the PD community',
+        name: 'MJFF Parkinson\'s Podcast',
+        url: 'https://feeds.captivate.fm/parkinsons-podcast/',
+        description: 'Scientists, doctors and people with PD on research and life with the disease',
         type: 'podcast'
     },
     {
-        name: 'Spotlight on Parkinson\'s (APDA)',
-        url: 'https://feeds.buzzsprout.com/1521898.rss',
-        description: 'American Parkinson Disease Association — news, tips, and expert interviews',
+        name: 'MDS Parkinson\'s Podcast',
+        url: 'https://www.movementdisorders.org/Podcast-RSS-Feed.htm',
+        description: 'International Movement Disorder Society — cutting-edge research for clinicians and patients',
         type: 'podcast'
     }
 ];
