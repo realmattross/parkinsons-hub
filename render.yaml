@@ -1,0 +1,11 @@
+# https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: parkinsons-hub
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production

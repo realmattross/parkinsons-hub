@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="A personal knowledge hub for tracking Parkinson's disease research, drug trials, exercise, nutrition, sleep, and breakthroughs." />
+  <title>Parkinson's Knowledge Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <div id="app">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <span class="logo-icon">🧠</span>
+          <div class="logo-text">
+            <h1>Knowledge Hub</h1>
+            <span class="logo-subtitle">Parkinson's Research</span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav" id="sidebar-nav">
+        <button class="nav-item active" data-category="all">
+          <span class="nav-icon">📊</span>
+          <span class="nav-label">All Articles</span>
+          <span class="nav-count" id="count-all">0</span>
+        </button>
+        <button class="nav-item nav-item-stats" data-category="stats">
+          <span class="nav-icon">📈</span>
+          <span class="nav-label">Stats & Facts</span>
+          <span class="nav-count" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24;">Live</span>
+        </button>
+        <button class="nav-item nav-item-trials" data-category="trials">
+          <span class="nav-icon">🧪</span>
+          <span class="nav-label">Live Trials</span>
+          <span class="nav-count" style="background: rgba(16, 185, 129, 0.15); color: #34d399;">Live</span>
+        </button>
+        <button class="nav-item nav-item-papers" data-category="papers">
+          <span class="nav-icon">📄</span>
+          <span class="nav-label">Research Papers</span>
+          <span class="nav-count" style="background: rgba(96, 165, 250, 0.15); color: #60a5fa;">Archive</span>
+        </button>
+        <button class="nav-item nav-item-timeline" data-category="timeline">
+          <span class="nav-icon">🕐</span>
+          <span class="nav-label">PD Timeline</span>
+          <span class="nav-count" style="background: rgba(52, 211, 153, 0.15); color: #34d399;">History</span>
+        </button>
+        <button class="nav-item nav-item-media" data-category="media">
+          <span class="nav-icon">🎙️</span>
+          <span class="nav-label">Podcasts & Video</span>
+          <span class="nav-count" style="background: rgba(251, 191, 36, 0.15); color: #fbbf24;">Live</span>
+        </button>
+        <div class="nav-divider"></div>
+        <button class="nav-item" data-category="Drug Trials">
+          <span class="nav-icon">💊</span>
+          <span class="nav-label">Drug Trials</span>
+          <span class="nav-count" id="count-drug-trials">0</span>
+        </button>
+        <button class="nav-item" data-category="Breakthroughs">
+          <span class="nav-icon">⚡</span>
+          <span class="nav-label">Breakthroughs</span>
+          <span class="nav-count" id="count-breakthroughs">0</span>
+        </button>
+        <button class="nav-item" data-category="Exercise">
+          <span class="nav-icon">🏃</span>
+          <span class="nav-label">Exercise</span>
+          <span class="nav-count" id="count-exercise">0</span>
+        </button>
+        <button class="nav-item" data-category="Nutrition">
+          <span class="nav-icon">🥗</span>
+          <span class="nav-label">Nutrition</span>
+          <span class="nav-count" id="count-nutrition">0</span>
+        </button>
+        <button class="nav-item" data-category="Sleep">
+          <span class="nav-icon">😴</span>
+          <span class="nav-label">Sleep</span>
+          <span class="nav-count" id="count-sleep">0</span>
+        </button>
+        <button class="nav-item" data-category="Mental Health">
+          <span class="nav-icon">🧘</span>
+          <span class="nav-label">Mental Health</span>
+          <span class="nav-count" id="count-mental-health">0</span>
+        </button>
+        <button class="nav-item" data-category="Therapies">
+          <span class="nav-icon">🩺</span>
+          <span class="nav-label">Therapies</span>
+          <span class="nav-count" id="count-therapies">0</span>
+        </button>
+        <button class="nav-item" data-category="Technology">
+          <span class="nav-icon">🤖</span>
+          <span class="nav-label">Technology</span>
+          <span class="nav-count" id="count-technology">0</span>
+        </button>
+        <button class="nav-item" data-category="Community">
+          <span class="nav-icon">🤝</span>
+          <span class="nav-label">Community</span>
+          <span class="nav-count" id="count-community">0</span>
+        </button>
+        <button class="nav-item" data-category="General">
+          <span class="nav-icon">📝</span>
+          <span class="nav-label">General</span>
+          <span class="nav-count" id="count-general">0</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-action" id="btn-fetch-now" title="Fetch latest articles">
+          <span>🔄</span> Fetch Now
+        </button>
+        <button class="sidebar-action" id="btn-export" title="Export all data">
+          <span>📥</span> Export
+        </button>
+        <button class="sidebar-action" id="btn-import" title="Import data">
+          <span>📤</span> Import
+        </button>
+        <input type="file" id="import-file" accept=".json" style="display:none" />
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+        <div class="search-container">
+          <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="search-input" class="search-input" placeholder="Search articles, trials, research..."
+            autocomplete="off" />
+          <span class="search-count" id="search-count"></span>
+        </div>
+        <div class="top-bar-actions">
+          <button class="eli5-toggle" id="eli5-toggle" title="Explain Like I'm New — adds plain-English summaries of medical jargon">
+            <span class="eli5-icon">💬</span>
+            <span class="eli5-label">Simple Mode</span>
+            <span class="eli5-pip" id="eli5-pip"></span>
+          </button>
+          <div class="fetch-status" id="fetch-status">
+            <span class="status-dot"></span>
+            <span class="status-text">Ready</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Area -->
+      <div class="content-area" id="content-area">
+        <!-- Category Header -->
+        <div class="content-header" id="content-header">
+          <h2 class="content-title" id="content-title">All Articles</h2>
+          <span class="content-subtitle" id="content-subtitle"></span>
+        </div>
+
+        <!-- Articles Grid -->
+        <div class="articles-grid" id="articles-grid">
+          <!-- Cards rendered by JS -->
+        </div>
+
+        <!-- Loading State -->
+        <div class="loading-state" id="loading-state" style="display: none;">
+          <div class="loading-spinner"></div>
+          <p>Fetching the latest research...</p>
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="empty-state" style="display: none;">
+          <div class="empty-icon">🔬</div>
+          <h3>No articles yet</h3>
+          <p>Click "Fetch Now" to pull the latest Parkinson's research, or add an entry manually.</p>
+          <button class="btn-primary" id="btn-empty-fetch">Fetch Latest Research</button>
+        </div>
+      </div>
+
+      <!-- FAB: Add Entry -->
+      <button class="fab" id="btn-add" title="Add new entry">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+      </button>
+    </main>
+
+    <!-- Article Detail Modal -->
+    <div class="modal-overlay" id="modal-detail" style="display: none;">
+      <div class="modal" id="modal-detail-content">
+        <button class="modal-close" id="modal-detail-close">&times;</button>
+        <div class="modal-body" id="modal-detail-body">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Add/Edit Entry Modal -->
+    <div class="modal-overlay" id="modal-form" style="display: none;">
+      <div class="modal modal-form">
+        <button class="modal-close" id="modal-form-close">&times;</button>
+        <h2 class="modal-title" id="modal-form-title">Add New Entry</h2>
+        <form id="entry-form" class="entry-form">
+          <input type="hidden" id="form-id" />
+
+          <div class="form-group">
+            <label for="form-title">Title</label>
+            <input type="text" id="form-title" required placeholder="Article or study title..." />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="form-category">Category</label>
+              <select id="form-category">
+                <option value="Drug Trials">💊 Drug Trials</option>
+                <option value="Breakthroughs">⚡ Breakthroughs</option>
+                <option value="Exercise">🏃 Exercise</option>
+                <option value="Nutrition">🥗 Nutrition</option>
+                <option value="Sleep">😴 Sleep</option>
+                <option value="Mental Health">🧘 Mental Health</option>
+                <option value="Therapies">🩺 Therapies</option>
+                <option value="Technology">🤖 Technology</option>
+                <option value="Community">🤝 Community</option>
+                <option value="General">📝 General</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="form-source">Source</label>
+              <input type="text" id="form-source" placeholder="e.g., PubMed, MJ Fox Foundation..." />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="form-url">Source URL</label>
+            <input type="url" id="form-url" placeholder="https://..." />
+          </div>
+
+          <div class="form-group">
+            <label for="form-summary">Summary</label>
+            <textarea id="form-summary" rows="3" placeholder="Brief summary of the key findings..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="form-content">Full Content / Notes</label>
+            <textarea id="form-content" rows="6"
+              placeholder="Detailed notes, full abstract, or your thoughts..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="form-tags">Tags <span class="label-hint">(comma separated)</span></label>
+            <input type="text" id="form-tags" placeholder="dopamine, exercise, clinical trial..." />
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn-secondary" id="btn-form-cancel">Cancel</button>
+            <button type="submit" class="btn-primary">Save Entry</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
